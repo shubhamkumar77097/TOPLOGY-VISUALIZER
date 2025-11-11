@@ -4,6 +4,7 @@ import React from 'react';
 import RangeSlider from './RangeSlider';
 import { useLatencyStore } from '@/lib/store';
 import { useEffect } from 'react';
+import { exportVisibleCSV, exportVisibleJSON, exportPNG, generateHtmlReport } from '@/lib/export';
 
 export function ControlsPanel() {
   const mobileMode = useLatencyStore((s) => s.mobileMode);
@@ -229,6 +230,26 @@ export function ControlsPanel() {
               alert('Export failed: ' + String(err));
             }
           }} className="px-2 py-1 rounded bg-blue-600 text-sm ml-2">Export CSV</button>
+          <button onClick={async () => {
+            try {
+              await exportVisibleCSV();
+            } catch (e) { alert('Export CSV failed: ' + String(e)); }
+          }} className="px-2 py-1 rounded bg-blue-600 text-sm ml-2">Export Visible CSV</button>
+          <button onClick={async () => {
+            try {
+              await exportVisibleJSON();
+            } catch (e) { alert('Export JSON failed: ' + String(e)); }
+          }} className="px-2 py-1 rounded bg-sky-600 text-sm ml-2">Export Visible JSON</button>
+          <button onClick={async () => {
+            try {
+              await exportPNG();
+            } catch (e) { alert('PNG export failed: ' + String(e)); }
+          }} className="px-2 py-1 rounded bg-neutral-700 text-sm ml-2">Save Snapshot PNG</button>
+          <button onClick={async () => {
+            try {
+              await generateHtmlReport();
+            } catch (e) { alert('Report generation failed: ' + String(e)); }
+          }} className="px-2 py-1 rounded bg-emerald-700 text-sm ml-2">Generate HTML Report</button>
           <button onClick={async () => {
             const pair = selectedPair || prompt('Enter pair id (from->to)');
             if (!pair) return;
