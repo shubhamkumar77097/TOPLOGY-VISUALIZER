@@ -86,3 +86,72 @@ body {
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* FORCE UI ELEMENTS TO BE VISIBLE - CRITICAL OVERRIDES */
+/* These rules ensure ControlsPanel and Legend are always visible regardless of other styles */
+
+/* Force ControlsPanel visibility */
+[class*="ControlsPanel"],
+div[style*="top: 1rem"][style*="right: 1rem"],
+.fixed.top-4.right-4 {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 999999 !important;
+  position: fixed !important;
+  background-color: rgba(40, 40, 40, 0.98) !important;
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Force Legend visibility */
+[class*="Legend"],
+.fixed.bottom-4.left-4 {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 999998 !important;
+  position: fixed !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: black !important;
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure all buttons and interactive elements in panels are visible */
+[class*="ControlsPanel"] button,
+[class*="Legend"] button,
+.fixed.top-4.right-4 button,
+.fixed.bottom-4.left-4 button {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  padding: 0.25rem 0.75rem !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+}
+
+/* Make sure text is readable */
+[class*="ControlsPanel"] *,
+.fixed.top-4.right-4 * {
+  color: white !important;
+}
+
+[class*="Legend"] *,
+.fixed.bottom-4.left-4 * {
+  color: black !important;
+}
+
+/* Override any pointer-events:none on parent containers */
+body > div,
+#__next,
+[class*="Scene"] {
+  pointer-events: auto;
+}
+
+body > div > div {
+  pointer-events: auto;
+}

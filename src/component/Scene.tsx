@@ -215,7 +215,7 @@ export default function Scene() {
             <div className="p-4 flex justify-between items-end">
               {/* Bottom-left UI elements */}
               <div className="flex flex-col space-y-2 items-start">
-                {showLegend && <Legend />}
+                <Legend />
               </div>
               {/* Bottom-right UI elements */}
               <div className="flex flex-col space-y-2 items-end">
