@@ -199,6 +199,12 @@
       "to": "coinbase-other-usa",
       "value": 190,
       "ts": 1762888800766
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 74,
+      "ts": 1762890662903
     }
   ],
   "binance-aws-tokyo->okx-azure-hongkong": [
@@ -333,6 +339,12 @@
       "to": "okx-azure-hongkong",
       "value": 133,
       "ts": 1762888786581
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "okx-azure-hongkong",
+      "value": 267,
+      "ts": 1762890676976
     }
   ],
   "coinbase-other-usa->okx-azure-hongkong": [
@@ -485,6 +497,24 @@
       "to": "okx-azure-hongkong",
       "value": 212,
       "ts": 1762890475229
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 216,
+      "ts": 1762890669895
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 206,
+      "ts": 1762890691141
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 58,
+      "ts": 1762890691141
     }
   ],
   "deribit-gcp-netherlands->bybit-aws-singapore": [
@@ -649,6 +679,12 @@
       "to": "bybit-aws-singapore",
       "value": 175,
       "ts": 1762888786581
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 111,
+      "ts": 1762890684054
     }
   ],
   "coinbase-other-usa->binance-aws-tokyo": [
@@ -929,6 +965,12 @@
       "to": "coinbase-other-usa",
       "value": 140,
       "ts": 1762890482226
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 282,
+      "ts": 1762890669895
     }
   ],
   "bybit-aws-singapore->okx-azure-hongkong": [
@@ -1871,6 +1913,12 @@
       "to": "bybit-aws-singapore",
       "value": 193,
       "ts": 1762890482226
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 133,
+      "ts": 1762890662903
     }
   ],
   "binance-aws-tokyo->bybit-aws-singapore": [
@@ -1993,6 +2041,12 @@
       "to": "bybit-aws-singapore",
       "value": 71,
       "ts": 1762890469021
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 239,
+      "ts": 1762890676976
     }
   ],
   "binance-aws-tokyo->deribit-gcp-netherlands": [
@@ -2285,6 +2339,12 @@
       "to": "coinbase-other-usa",
       "value": 167,
       "ts": 1762888793676
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 81,
+      "ts": 1762890662903
     }
   ],
   "okx-azure-hongkong->binance-aws-tokyo": [
@@ -2591,6 +2651,24 @@
       "to": "binance-aws-tokyo",
       "value": 65,
       "ts": 1762888765337
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 52,
+      "ts": 1762890676976
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 86,
+      "ts": 1762890684054
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 256,
+      "ts": 1762890691141
     }
   ],
   "deribit-gcp-netherlands->okx-azure-hongkong": [
@@ -2719,6 +2797,24 @@
       "to": "okx-azure-hongkong",
       "value": 57,
       "ts": 1762889235511
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 99,
+      "ts": 1762890662903
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 73,
+      "ts": 1762890669895
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 99,
+      "ts": 1762890676976
     }
   ],
   "bybit-aws-singapore->coinbase-other-usa": [
@@ -2909,6 +3005,18 @@
       "to": "binance-aws-tokyo",
       "value": 62,
       "ts": 1762890475229
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 122,
+      "ts": 1762890684054
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 234,
+      "ts": 1762890691141
     }
   ]
 }

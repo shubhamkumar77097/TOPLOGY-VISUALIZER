@@ -216,7 +216,6 @@ export default function Scene() {
               {/* Bottom-left UI elements */}
               <div className="flex flex-col space-y-2 items-start">
                 {showLegend && <Legend />}
-                <ControlsPanel />
               </div>
               {/* Bottom-right UI elements */}
               <div className="flex flex-col space-y-2 items-end">
@@ -226,6 +225,8 @@ export default function Scene() {
             </div>
           </div>
         </div>
+        {/* ControlsPanel fixed to top-right, outside flow */}
+        <ControlsPanel />
         <PairLabel />
         {/* <Topology />
         <PerformanceMetrics /> */}

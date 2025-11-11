@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {/* Server-rendered fallback legend so it's always visible */}
-          <div className="fixed bottom-4 left-4 z-50 rounded-lg p-3 hidden sm:block" style={{ backgroundColor: 'var(--legend-bg)', color: 'var(--legend-fg)' }}>
+          <div className="fixed bottom-4 left-4 z-40 rounded-lg p-3 shadow-lg" style={{ backgroundColor: 'var(--legend-bg)', color: 'var(--legend-fg)' }}>
             <h3 className="mb-1 text-sm font-semibold">Cloud Providers</h3>
             <ul className="text-xs">
               <li className="flex items-center"><span className="inline-block h-2 w-2 mr-2 rounded-full" style={{backgroundColor: '#FF9900'}}></span>AWS</li>
