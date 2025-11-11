@@ -61,6 +61,11 @@ export function ControlsPanel() {
   const setMinLatency = useLatencyStore((s) => (s as any).setMinLatency);
   const { theme, toggleTheme } = useTheme();
 
+  // Ensure panel is open by default on mobile so controls aren't hidden
+  useEffect(() => {
+    if (mobileMode) setOpenMobile(true);
+  }, [mobileMode]);
+
   // Load persisted settings on mount
   useEffect(() => {
     try {
@@ -137,7 +142,10 @@ export function ControlsPanel() {
   }, []);
 
   return (
-    <div className={`fixed top-4 right-4 z-50 p-3 rounded shadow-lg ${mobileMode ? 'max-w-xs' : ''}`} style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)', border: '1px solid var(--panel-border)' }}>
+    <div
+      className={`fixed top-4 right-4 z-[100000] p-3 rounded shadow-lg pointer-events-auto ${mobileMode ? 'w-[92vw] max-w-sm' : 'w-80'} max-h-[80vh] overflow-y-auto`}
+      style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--panel-fg)', border: '1px solid var(--panel-border)' }}
+    >
       {mobileMode && (
         <div className="mb-2">
           <button onClick={() => setOpenMobile((v) => !v)} className="px-3 py-1 rounded text-sm" style={{ backgroundColor: 'var(--button-bg)' }}>{openMobile ? 'Close' : 'Open'} Controls</button>
@@ -151,7 +159,7 @@ export function ControlsPanel() {
     <button 
       onClick={toggleTheme}
       className="px-3 py-1 rounded text-sm transition-all"
-      style={{ backgroundColor: 'var(--button-bg)' }}
+      style={{ backgroundColor: 'var(--button-bg)', color: 'var(--panel-fg)', border: '1px solid var(--panel-border)' }}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
     >
