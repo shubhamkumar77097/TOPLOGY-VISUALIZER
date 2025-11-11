@@ -18,7 +18,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    setMounted(true);
     const stored = localStorage.getItem('tv-theme') as Theme | null;
     if (stored && (stored === 'light' || stored === 'dark')) {
       setThemeState(stored);
@@ -27,6 +26,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       // Default to dark theme
       document.documentElement.setAttribute('data-theme', 'dark');
     }
+    setMounted(true);
   }, []);
 
   const setTheme = (newTheme: Theme) => {
@@ -40,11 +40,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme(newTheme);
   };
 
-  // Prevent flash of unstyled content
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always render children, but theme operations only work after mount
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
@@ -55,7 +51,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    // Fallback for when used outside ThemeProvider (shouldn't happen in production)
+    console.warn('useTheme called outside ThemeProvider, using fallback');
+    return {
+      theme: 'dark' as Theme,
+      toggleTheme: () => {},
+      setTheme: () => {},
+    };
   }
   return context;
 }
