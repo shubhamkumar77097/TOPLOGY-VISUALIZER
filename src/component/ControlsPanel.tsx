@@ -144,7 +144,12 @@ export function ControlsPanel() {
   return (
     <div
       className={`fixed top-4 right-4 z-[100000] p-3 rounded shadow-lg pointer-events-auto ${mobileMode ? 'w-[92vw] max-w-sm' : 'w-80'} max-h-[80vh] overflow-y-auto`}
-      style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--panel-fg)', border: '1px solid var(--panel-border)' }}
+      style={{ 
+        backgroundColor: 'var(--panel-bg, rgba(40, 40, 40, 0.98))', 
+        color: 'var(--panel-fg, #ffffff)', 
+        border: '2px solid var(--panel-border, rgba(255, 255, 255, 0.3))',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.8)'
+      }}
     >
       {mobileMode && (
         <div className="mb-2">
@@ -154,12 +159,16 @@ export function ControlsPanel() {
   {!mobileMode || openMobile ? (
   <>
   {/* Theme Toggle Button */}
-  <div className="mb-3 flex items-center justify-between pb-2" style={{ borderBottom: '1px solid var(--panel-border)' }}>
-    <h4 className="font-semibold text-sm">Controls</h4>
+  <div className="mb-3 flex items-center justify-between pb-2" style={{ borderBottom: '1px solid var(--panel-border, rgba(255, 255, 255, 0.3))' }}>
+    <h4 className="font-semibold text-sm" style={{ color: 'var(--panel-fg, #ffffff)' }}>Controls</h4>
     <button 
       onClick={toggleTheme}
-      className="px-3 py-1 rounded text-sm transition-all"
-      style={{ backgroundColor: 'var(--button-bg)', color: 'var(--panel-fg)', border: '1px solid var(--panel-border)' }}
+      className="px-3 py-1 rounded text-sm transition-all font-semibold"
+      style={{ 
+        backgroundColor: 'var(--button-bg, rgba(255, 255, 255, 0.2))', 
+        color: 'var(--panel-fg, #ffffff)', 
+        border: '1px solid var(--panel-border, rgba(255, 255, 255, 0.4))'
+      }}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
     >
