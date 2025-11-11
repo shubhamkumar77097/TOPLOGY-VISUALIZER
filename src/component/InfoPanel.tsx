@@ -86,7 +86,7 @@ export function InfoPanel() {
   };
 
   return (
-    <div className="fixed top-16 right-4 z-50 w-72 max-w-[90vw] bg-black/70 text-white p-3 rounded shadow-lg">
+    <div className="fixed top-16 right-4 z-50 w-72 max-w-[90vw] p-3 rounded shadow-lg" style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)' }}>
       <div className="flex items-center justify-between">
         <h4 className="font-semibold">Info</h4>
         <div className="text-xs text-gray-300">{selected ? 'Location' : selectedPair ? 'Pair' : ''}</div>

@@ -10,7 +10,7 @@ export function SelectionBadge() {
   if (!selectedPair) return null;
 
   return (
-    <div className="fixed bottom-20 right-4 z-50 bg-white/90 text-black p-2 rounded flex items-center gap-2">
+    <div className="fixed bottom-20 right-4 z-50 p-2 rounded flex items-center gap-2" style={{ backgroundColor: 'var(--badge-bg)', color: 'var(--badge-fg)' }}>
       <div className="text-sm">Selected: <span className="font-mono">{selectedPair}</span></div>
       <button className="text-xs bg-red-500 text-white px-2 py-1 rounded" onClick={() => setSelectedPair(null)}>Clear</button>
     </div>

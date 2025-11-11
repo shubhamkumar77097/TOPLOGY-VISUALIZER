@@ -79,7 +79,7 @@ export default function HistoryPanel() {
   },[]);
 
   if (!selectedPair) return (
-    <div className="fixed bottom-4 left-4 z-50 bg-black/70 text-white p-3 rounded text-sm">Select a pair to view history
+    <div className="fixed bottom-4 left-4 z-50 p-3 rounded text-sm" style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)' }}>Select a pair to view history
       <div className="mt-2 text-xs">Or choose from the dropdown in the History panel.</div>
     </div>
   );
@@ -90,7 +90,7 @@ export default function HistoryPanel() {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 bg-black/80 text-white p-3 rounded w-96">
+    <div className="fixed bottom-4 left-4 z-50 p-3 rounded w-96" style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)' }}>
       <div className="flex justify-between items-center mb-2">
         <div className="font-semibold">History</div>
         <div className="flex flex-col">

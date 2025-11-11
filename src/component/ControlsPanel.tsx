@@ -5,6 +5,7 @@ import RangeSlider from './RangeSlider';
 import { useLatencyStore } from '@/lib/store';
 import { useEffect } from 'react';
 import { exportVisibleCSV, exportVisibleJSON, exportPNG, generateHtmlReport } from '@/lib/export';
+import { useTheme } from './ThemeProvider';
 
 export function ControlsPanel() {
   const mobileMode = useLatencyStore((s) => s.mobileMode);
@@ -58,6 +59,7 @@ export function ControlsPanel() {
   const selectedPair = useLatencyStore((s) => s.selectedPair);
   const minLatency = useLatencyStore((s) => (s as any).minLatency ?? 0);
   const setMinLatency = useLatencyStore((s) => (s as any).setMinLatency);
+  const { theme, toggleTheme } = useTheme();
 
   // Load persisted settings on mount
   useEffect(() => {
@@ -135,14 +137,27 @@ export function ControlsPanel() {
   }, []);
 
   return (
-    <div className={`fixed top-4 right-4 z-50 bg-black/70 text-white p-3 rounded ${mobileMode ? 'max-w-xs' : ''}`}>
+    <div className={`fixed top-4 right-4 z-50 p-3 rounded ${mobileMode ? 'max-w-xs' : ''}`} style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)' }}>
       {mobileMode && (
         <div className="mb-2">
-          <button onClick={() => setOpenMobile((v) => !v)} className="px-3 py-1 bg-white/10 rounded text-sm">{openMobile ? 'Close' : 'Open'} Controls</button>
+          <button onClick={() => setOpenMobile((v) => !v)} className="px-3 py-1 rounded text-sm" style={{ backgroundColor: 'var(--button-bg)' }}>{openMobile ? 'Close' : 'Open'} Controls</button>
         </div>
       )}
   {!mobileMode || openMobile ? (
   <>
+  {/* Theme Toggle Button */}
+  <div className="mb-3 flex items-center justify-between pb-2" style={{ borderBottom: '1px solid var(--panel-border)' }}>
+    <h4 className="font-semibold text-sm">Controls</h4>
+    <button 
+      onClick={toggleTheme}
+      className="px-3 py-1 rounded text-sm transition-all"
+      style={{ backgroundColor: 'var(--button-bg)' }}
+      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+    >
+      {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+    </button>
+  </div>
   <h4 className="font-semibold mb-2">Filters</h4>
   {Object.keys(providerFilters).map((p) => (
         <label key={p} className="flex items-center text-sm" title={`Toggle ${p} provider`}>
@@ -324,12 +339,6 @@ export function ControlsPanel() {
           <input type="checkbox" checked={persistControls} onChange={(e) => setPersistControls(e.target.checked)} className="mr-2" />
           Persist controls
         </label>
-      </div>
-      <div className="mt-2">
-        <label className="text-sm">Theme</label>
-        <div className="mt-1">
-          <button onClick={() => { const next = (document.documentElement.classList.toggle('light'), document.documentElement.classList.contains('light') ? 'light' : 'dark'); setTheme(next as any); localStorage.setItem('tv-theme', next); }} className="px-2 py-1 rounded bg-gray-200 text-black mr-2 text-sm">Toggle Light</button>
-        </div>
       </div>
   <div className="mt-2">
   <label htmlFor="tv-search" className="text-sm">Search exchanges/locations</label>

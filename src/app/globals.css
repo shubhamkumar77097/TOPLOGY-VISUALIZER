@@ -2,6 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Theme Variables */
+:root[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-bg: rgba(0, 0, 0, 0.8);
+  --card-fg: #ffffff;
+  --panel-bg: rgba(0, 0, 0, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --input-fg: #ffffff;
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --legend-bg: rgba(255, 255, 255, 0.9);
+  --legend-fg: #000000;
+  --badge-bg: rgba(0, 0, 0, 0.7);
+  --badge-fg: #ffffff;
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --button-hover: rgba(255, 255, 255, 0.2);
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-text: #ededed;
+}
+
+:root[data-theme="light"] {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-fg: #000000;
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --panel-border: rgba(0, 0, 0, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(0, 0, 0, 0.2);
+  --input-fg: #000000;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --shadow: rgba(0, 0, 0, 0.1);
+  --legend-bg: rgba(255, 255, 255, 0.9);
+  --legend-fg: #000000;
+  --badge-bg: rgba(255, 255, 255, 0.9);
+  --badge-fg: #000000;
+  --button-bg: rgba(0, 0, 0, 0.05);
+  --button-hover: rgba(0, 0, 0, 0.1);
+  --chart-grid: rgba(0, 0, 0, 0.1);
+  --chart-text: #171717;
+}
+
+/* Default to dark theme */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 /* Make the 3D canvas fill the entire screen */
 html,
 body,
@@ -14,12 +65,7 @@ body,
 }
 
 body {
-  background-color: #000000; /* Default to a black background */
-  color: white;
-}
-
-/* Light theme */
-.light body {
-  background-color: #f7f7f7;
-  color: #111;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
