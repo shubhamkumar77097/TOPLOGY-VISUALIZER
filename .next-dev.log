@@ -1,0 +1,24 @@
+
+> toplogy-visualizer@0.1.0 dev
+> next dev --webpack
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/shubhamkumar/portfolio-reporting/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/shubhamkumar/portfolio-reporting/LATENCY TOPOLOGY VISUALIZER/toplogy-visualizer/package-lock.json
+
+   ▲ Next.js 16.0.1 (webpack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.38:3000
+
+ ✓ Starting...
+ ✓ Ready in 1477ms
+ ⚠ ./src/app/api/history/aggregate/route.ts
+Module not found: Can't resolve '../../../lib/historyStore' in '/Users/shubhamkumar/portfolio-reporting/LATENCY TOPOLOGY VISUALIZER/toplogy-visualizer/src/app/api/history/aggregate'
+
+Import trace for requested module:
+./src/app/api/history/aggregate/route.ts
+ GET /api/history/aggregate?range=24h&bucketMs=3600000 200 in 837ms (compile: 803ms, render: 34ms)
+ ○ Compiling /api/history/aggregate ...

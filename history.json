@@ -1,0 +1,1066 @@
+{
+  "loc1->loc2": [
+    {
+      "from": "loc1",
+      "to": "loc2",
+      "value": 42,
+      "ts": 1762810443781
+    },
+    {
+      "from": "loc1",
+      "to": "loc2",
+      "value": 180,
+      "ts": 1762810486609
+    },
+    {
+      "from": "loc1",
+      "to": "loc2",
+      "value": 67,
+      "ts": 1762838663590
+    }
+  ],
+  "deribit-gcp-netherlands->coinbase-other-usa": [
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 157,
+      "ts": 1762838173287
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 116,
+      "ts": 1762838504385
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 94,
+      "ts": 1762838504385
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 107,
+      "ts": 1762838504385
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 84,
+      "ts": 1762862613816
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 33,
+      "ts": 1762862641915
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 58,
+      "ts": 1762862833288
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 41,
+      "ts": 1762862833288
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 157,
+      "ts": 1762863516996
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 27,
+      "ts": 1762863550508
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 137,
+      "ts": 1762863550508
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "coinbase-other-usa",
+      "value": 147,
+      "ts": 1762863558013
+    }
+  ],
+  "binance-aws-tokyo->okx-azure-hongkong": [
+    {
+      "from": "binance-aws-tokyo",
+      "to": "okx-azure-hongkong",
+      "value": 141,
+      "ts": 1762838173287
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "okx-azure-hongkong",
+      "value": 304,
+      "ts": 1762838474696
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "okx-azure-hongkong",
+      "value": 291,
+      "ts": 1762862613816
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "okx-azure-hongkong",
+      "value": 97,
+      "ts": 1762863502936
+    }
+  ],
+  "coinbase-other-usa->okx-azure-hongkong": [
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 181,
+      "ts": 1762838173287
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 115,
+      "ts": 1762838497402
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 205,
+      "ts": 1762838511491
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 210,
+      "ts": 1762862634805
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 95,
+      "ts": 1762862697048
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 168,
+      "ts": 1762862704058
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 176,
+      "ts": 1762862718162
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 83,
+      "ts": 1762862833288
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 163,
+      "ts": 1762863502936
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 87,
+      "ts": 1762863509936
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 112,
+      "ts": 1762863516996
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 204,
+      "ts": 1762863558013
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "okx-azure-hongkong",
+      "value": 146,
+      "ts": 1762863582829
+    }
+  ],
+  "deribit-gcp-netherlands->bybit-aws-singapore": [
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 233,
+      "ts": 1762838173287
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 118,
+      "ts": 1762838468263
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 285,
+      "ts": 1762838504385
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 37,
+      "ts": 1762838504385
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 66,
+      "ts": 1762862609205
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 110,
+      "ts": 1762862676037
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 117,
+      "ts": 1762862690048
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 41,
+      "ts": 1762862704058
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 114,
+      "ts": 1762862711060
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 167,
+      "ts": 1762863502936
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "bybit-aws-singapore",
+      "value": 27,
+      "ts": 1762863596888
+    }
+  ],
+  "coinbase-other-usa->binance-aws-tokyo": [
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 66,
+      "ts": 1762838173287
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 61,
+      "ts": 1762838497402
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 70,
+      "ts": 1762862683043
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 139,
+      "ts": 1762862704058
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 79,
+      "ts": 1762863496597
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 166,
+      "ts": 1762863496597
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "binance-aws-tokyo",
+      "value": 83,
+      "ts": 1762863516996
+    }
+  ],
+  "binance-aws-tokyo->coinbase-other-usa": [
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 194,
+      "ts": 1762838468263
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 140,
+      "ts": 1762838468263
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 88,
+      "ts": 1762838474696
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 113,
+      "ts": 1762838519187
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 142,
+      "ts": 1762838519187
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 144,
+      "ts": 1762862627808
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 200,
+      "ts": 1762862683043
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 211,
+      "ts": 1762862747869
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "coinbase-other-usa",
+      "value": 97,
+      "ts": 1762862840387
+    }
+  ],
+  "bybit-aws-singapore->okx-azure-hongkong": [
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 169,
+      "ts": 1762838468263
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 116,
+      "ts": 1762838474696
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 133,
+      "ts": 1762862826385
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 85,
+      "ts": 1762862826385
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 215,
+      "ts": 1762862833288
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 81,
+      "ts": 1762862840387
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "okx-azure-hongkong",
+      "value": 266,
+      "ts": 1762863496597
+    }
+  ],
+  "bybit-aws-singapore->deribit-gcp-netherlands": [
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 284,
+      "ts": 1762838468263
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 176,
+      "ts": 1762862641915
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 109,
+      "ts": 1762862662017
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 195,
+      "ts": 1762862669021
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 148,
+      "ts": 1762862733675
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 85,
+      "ts": 1762862740770
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 283,
+      "ts": 1762862833288
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 320,
+      "ts": 1762863550508
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 83,
+      "ts": 1762863558013
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "deribit-gcp-netherlands",
+      "value": 179,
+      "ts": 1762863596888
+    }
+  ],
+  "coinbase-other-usa->deribit-gcp-netherlands": [
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 143,
+      "ts": 1762838474696
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 177,
+      "ts": 1762862613816
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 192,
+      "ts": 1762862620804
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 74,
+      "ts": 1762862662017
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 75,
+      "ts": 1762862662017
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 179,
+      "ts": 1762862690048
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 142,
+      "ts": 1762862711060
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 132,
+      "ts": 1762862733675
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 31,
+      "ts": 1762862840387
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 124,
+      "ts": 1762863509936
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 58,
+      "ts": 1762863524094
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 180,
+      "ts": 1762863543467
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "deribit-gcp-netherlands",
+      "value": 224,
+      "ts": 1762863550508
+    }
+  ],
+  "okx-azure-hongkong->deribit-gcp-netherlands": [
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 146,
+      "ts": 1762838474696
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 335,
+      "ts": 1762862634805
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 235,
+      "ts": 1762862676037
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 100,
+      "ts": 1762862690048
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 121,
+      "ts": 1762862718162
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 275,
+      "ts": 1762862840387
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 89,
+      "ts": 1762863509936
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "deribit-gcp-netherlands",
+      "value": 321,
+      "ts": 1762863524094
+    }
+  ],
+  "coinbase-other-usa->bybit-aws-singapore": [
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 232,
+      "ts": 1762838481744
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 127,
+      "ts": 1762838481744
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 175,
+      "ts": 1762838497402
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 96,
+      "ts": 1762862620804
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 162,
+      "ts": 1762862627808
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 98,
+      "ts": 1762862669021
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 72,
+      "ts": 1762862711060
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 270,
+      "ts": 1762863543467
+    },
+    {
+      "from": "coinbase-other-usa",
+      "to": "bybit-aws-singapore",
+      "value": 63,
+      "ts": 1762863543467
+    }
+  ],
+  "okx-azure-hongkong->bybit-aws-singapore": [
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 171,
+      "ts": 1762838481744
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 99,
+      "ts": 1762862641915
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 55,
+      "ts": 1762862662017
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 176,
+      "ts": 1762862690048
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 109,
+      "ts": 1762862747869
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 99,
+      "ts": 1762862826385
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "bybit-aws-singapore",
+      "value": 205,
+      "ts": 1762863509936
+    }
+  ],
+  "binance-aws-tokyo->bybit-aws-singapore": [
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 66,
+      "ts": 1762838511491
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 253,
+      "ts": 1762838519187
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 90,
+      "ts": 1762862649637
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 33,
+      "ts": 1762862683043
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 162,
+      "ts": 1762862711060
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 72,
+      "ts": 1762862733675
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "bybit-aws-singapore",
+      "value": 262,
+      "ts": 1762862826385
+    }
+  ],
+  "binance-aws-tokyo->deribit-gcp-netherlands": [
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 35,
+      "ts": 1762838511491
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 27,
+      "ts": 1762862609205
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 91,
+      "ts": 1762862613816
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 64,
+      "ts": 1762862620804
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 36,
+      "ts": 1762862649637
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 331,
+      "ts": 1762862669021
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 188,
+      "ts": 1762863502936
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 78,
+      "ts": 1762863524094
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 323,
+      "ts": 1762863582829
+    },
+    {
+      "from": "binance-aws-tokyo",
+      "to": "deribit-gcp-netherlands",
+      "value": 129,
+      "ts": 1762863596888
+    }
+  ],
+  "okx-azure-hongkong->coinbase-other-usa": [
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 96,
+      "ts": 1762838511491
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 123,
+      "ts": 1762862613816
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 196,
+      "ts": 1762862627808
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 167,
+      "ts": 1762862634805
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 222,
+      "ts": 1762862697049
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 99,
+      "ts": 1762862733675
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "coinbase-other-usa",
+      "value": 45,
+      "ts": 1762863582829
+    }
+  ],
+  "okx-azure-hongkong->binance-aws-tokyo": [
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 102,
+      "ts": 1762838519187
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 151,
+      "ts": 1762862609205
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 230,
+      "ts": 1762862620804
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 64,
+      "ts": 1762862634805
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 129,
+      "ts": 1762862662017
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 48,
+      "ts": 1762862683043
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 152,
+      "ts": 1762862697049
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 101,
+      "ts": 1762863502936
+    },
+    {
+      "from": "okx-azure-hongkong",
+      "to": "binance-aws-tokyo",
+      "value": 86,
+      "ts": 1762863582829
+    }
+  ],
+  "t1->t2": [
+    {
+      "from": "t1",
+      "to": "t2",
+      "value": 10,
+      "ts": 1762849576590
+    }
+  ],
+  "bybit-aws-singapore->binance-aws-tokyo": [
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 123,
+      "ts": 1762862609205
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 146,
+      "ts": 1762862683043
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 57,
+      "ts": 1762862740770
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 246,
+      "ts": 1762863550508
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 85,
+      "ts": 1762863589763
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "binance-aws-tokyo",
+      "value": 152,
+      "ts": 1762863596888
+    }
+  ],
+  "deribit-gcp-netherlands->okx-azure-hongkong": [
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 69,
+      "ts": 1762862627808
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 90,
+      "ts": 1762862649637
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 52,
+      "ts": 1762862669021
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 149,
+      "ts": 1762862690048
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 104,
+      "ts": 1762862747869
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "okx-azure-hongkong",
+      "value": 71,
+      "ts": 1762863516996
+    }
+  ],
+  "bybit-aws-singapore->coinbase-other-usa": [
+    {
+      "from": "bybit-aws-singapore",
+      "to": "coinbase-other-usa",
+      "value": 60,
+      "ts": 1762862634805
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "coinbase-other-usa",
+      "value": 75,
+      "ts": 1762862733675
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "coinbase-other-usa",
+      "value": 80,
+      "ts": 1762863496597
+    },
+    {
+      "from": "bybit-aws-singapore",
+      "to": "coinbase-other-usa",
+      "value": 48,
+      "ts": 1762863509936
+    }
+  ],
+  "deribit-gcp-netherlands->binance-aws-tokyo": [
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 156,
+      "ts": 1762862676037
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 73,
+      "ts": 1762862718162
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 64,
+      "ts": 1762862740770
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 227,
+      "ts": 1762862740770
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 207,
+      "ts": 1762862840387
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 300,
+      "ts": 1762863496597
+    },
+    {
+      "from": "deribit-gcp-netherlands",
+      "to": "binance-aws-tokyo",
+      "value": 78,
+      "ts": 1762863589763
+    }
+  ]
+}

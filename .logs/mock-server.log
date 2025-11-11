@@ -1,0 +1,6 @@
+Mock WS server listening on ws://localhost:8081
+Mock server HTTP bridge listening on http://localhost:8082
+Mock HTTP bridge received /broadcast: { from: 'test', to: 'test', value: 222, ts: 123 }
+Mock HTTP bridge forwarded broadcast to 0 client(s)
+client connected
+client connected

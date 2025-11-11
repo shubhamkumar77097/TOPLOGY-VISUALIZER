@@ -1,0 +1,5 @@
+[
+  { "provider": "AWS", "region": "ap-northeast-1", "code": "ap-northeast-1", "bounds": [ [35.0, 139.0], [36.0, 140.0] ] },
+  { "provider": "GCP", "region": "europe-west1", "code": "europe-west1", "bounds": [ [52.0, 4.5], [53.0, 5.5] ] },
+  { "provider": "Azure", "region": "southeastasia", "code": "southeastasia", "bounds": [ [1.0, 103.0], [2.0, 104.0] ] }
+]

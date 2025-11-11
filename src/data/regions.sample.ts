@@ -1,0 +1,16 @@
+const geo = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: { provider: 'AWS', code: 'ap-northeast-1' },
+      geometry: { type: 'Polygon', coordinates: [[[139.7,35.7],[140.0,35.7],[140.0,36.0],[139.7,36.0],[139.7,35.7]]] }
+    },
+    {
+      type: 'Feature',
+      properties: { provider: 'GCP', code: 'europe-west1' },
+      geometry: { type: 'Polygon', coordinates: [[[-3.7,40.4],[-3.4,40.4],[-3.4,40.7],[-3.7,40.7],[-3.7,40.4]]] }
+    }
+  ]
+};
+export default geo;
