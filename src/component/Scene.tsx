@@ -17,6 +17,8 @@ import { ControlsPanel } from "./ControlsPanel";
 import { Regions } from "./Regions";
 import Heatmap from './Heatmap';
 import Topology from './Topology';
+import PerformanceMetrics from './PerformanceMetrics';
+import DataFlow from './DataFlow';
 import * as THREE from 'three';
 import SystemStatus from './SystemStatus';
 import RegionBoundaries from './RegionBoundaries';
@@ -187,6 +189,10 @@ export default function Scene() {
   <Regions />
   {/* Topology overlay requires useThree, render inside Canvas */}
   <Topology />
+  {/* Performance metrics (FPS) inside Canvas */}
+  <PerformanceMetrics />
+  {/* Animated data-flow visualization */}
+  <DataFlow />
   {/* PairLabel uses <Html /> and must be inside Canvas */}
   <PairLabel />
   {/* Camera animator must be inside Canvas */}

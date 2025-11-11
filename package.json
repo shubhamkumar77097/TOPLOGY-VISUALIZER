@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-  "dev:with-mock": "node ./scripts/mock-server.js & sleep 0.2; next dev --webpack",
+    "dev:with-mock": "node ./scripts/mock-server.js & sleep 0.2; next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
     "mock-server": "node ./scripts/mock-server.js",
@@ -15,11 +15,11 @@
     "import-data": "node ./scripts/import-data.js",
     "prepare-release": "node ./scripts/refresh-history-db.js",
     "smoke-test": "node ./scripts/history-smoke-test.js",
-  "worker:run": "node ./scripts/worker-direct.js",
-  "worker:schedule": "node ./scripts/schedule-probes.js",
-  "pm2:start-worker": "pm2 start ./scripts/worker-direct.js --name topology-worker --cron \"*/1 * * * *\"",
-  "compute-rollups": "node ./scripts/compute-rollups.js",
-  "pm2:start-rollups": "pm2 start ./scripts/compute-rollups.js --name topology-rollups --cron \"0 * * * *\"",
+    "worker:run": "node ./scripts/worker-direct.js",
+    "worker:schedule": "node ./scripts/schedule-probes.js",
+    "pm2:start-worker": "pm2 start ./scripts/worker-direct.js --name topology-worker --cron \"*/1 * * * *\"",
+    "compute-rollups": "node ./scripts/compute-rollups.js",
+    "pm2:start-rollups": "pm2 start ./scripts/compute-rollups.js --name topology-rollups --cron \"0 * * * *\"",
     "lint": "eslint",
     "test": "jest --runInBand",
     "test:unit": "jest --runInBand",
@@ -29,7 +29,9 @@
   "jest": {
     "testEnvironment": "node",
     "testTimeout": 20000,
-    "testMatch": ["**/tests/**/*.test.js"]
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",

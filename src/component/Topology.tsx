@@ -44,17 +44,58 @@ export default function Topology() {
     svg.style.position = 'absolute';
     svg.style.inset = '0';
     svg.style.pointerEvents = 'none';
-    links.forEach((l:any)=>{
+    // create defs for animated dash style
+    const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+    const style = document.createElementNS('http://www.w3.org/2000/svg','style');
+    style.textContent = `
+      .topo-line { stroke-linecap: round; stroke-dasharray: 8 6; stroke-dashoffset: 0; transition: stroke-opacity 160ms ease; }
+      .topo-line.animate { animation: dashmove 2s linear infinite; }
+      .topo-line.highlight { stroke-width: 4 !important; stroke-opacity: 1 !important; }
+      @keyframes dashmove { to { stroke-dashoffset: -32; } }
+    `;
+    defs.appendChild(style);
+    svg.appendChild(defs);
+    links.forEach((l:any, idx:number)=>{
       const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('class','topo-line');
+      line.setAttribute('data-idx', String(idx));
       line.setAttribute('x1', String(l.p1.x)); line.setAttribute('y1', String(l.p1.y));
       line.setAttribute('x2', String(l.p2.x)); line.setAttribute('y2', String(l.p2.y));
       const w = Math.max(0.5, Math.min(3, 3 - (l.value/300)));
       line.setAttribute('stroke-width', String(w));
       line.setAttribute('stroke', l.value < 120 ? '#10b981' : l.value < 300 ? '#f59e0b' : '#ef4444');
       line.setAttribute('stroke-opacity', '0.7');
+      // animate heavier traffic lines
+      if (l.value < 200) line.classList.add('animate');
       svg.appendChild(line);
     });
+    // simple mouse tracking to highlight nearest line
+    let lastHighlight: SVGElement | null = null;
+    function onMove(e: MouseEvent) {
+      const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+      let nearest: Element | null = null; let best = Infinity;
+      const nodes = svg.querySelectorAll('line.topo-line');
+      nodes.forEach((ln) => {
+        const el = ln as SVGLineElement;
+        const x1 = Number(el.getAttribute('x1')); const y1 = Number(el.getAttribute('y1'));
+        const x2 = Number(el.getAttribute('x2')); const y2 = Number(el.getAttribute('y2'));
+        // distance from point to segment
+        const A = x - x1, B = y - y1, C = x2 - x1, D = y2 - y1;
+        const dot = A * C + B * D;
+        const len_sq = C*C + D*D;
+        const param = len_sq !== 0 ? Math.max(0, Math.min(1, dot / len_sq)) : -1;
+        const xx = x1 + param * C; const yy = y1 + param * D;
+        const dist = Math.hypot(x - xx, y - yy);
+        if (dist < best && dist < 16) { best = dist; nearest = el; }
+      });
+      if (lastHighlight && lastHighlight !== nearest) (lastHighlight as Element).classList.remove('highlight');
+      if (nearest && lastHighlight !== nearest) (nearest as Element).classList.add('highlight');
+      lastHighlight = nearest as SVGElement | null;
+    }
+    svg.addEventListener('mousemove', onMove);
     el.appendChild(svg);
+    // cleanup handler when effect re-runs
+    return () => { try { svg.removeEventListener('mousemove', onMove); } catch {} };
   }, [latencies, show, three.camera]);
 
   if (!show) return null;
