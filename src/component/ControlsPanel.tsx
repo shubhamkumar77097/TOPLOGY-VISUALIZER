@@ -137,7 +137,7 @@ export function ControlsPanel() {
   }, []);
 
   return (
-    <div className={`fixed top-4 right-4 z-50 p-3 rounded ${mobileMode ? 'max-w-xs' : ''}`} style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)' }}>
+    <div className={`fixed top-4 right-4 z-50 p-3 rounded shadow-lg ${mobileMode ? 'max-w-xs' : ''}`} style={{ backgroundColor: 'var(--panel-bg)', color: 'var(--card-fg)', border: '1px solid var(--panel-border)' }}>
       {mobileMode && (
         <div className="mb-2">
           <button onClick={() => setOpenMobile((v) => !v)} className="px-3 py-1 rounded text-sm" style={{ backgroundColor: 'var(--button-bg)' }}>{openMobile ? 'Close' : 'Open'} Controls</button>

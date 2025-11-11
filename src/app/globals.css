@@ -6,21 +6,21 @@
 :root[data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --card-bg: rgba(0, 0, 0, 0.8);
+  --card-bg: rgba(30, 30, 30, 0.95);
   --card-fg: #ffffff;
-  --panel-bg: rgba(0, 0, 0, 0.7);
-  --panel-border: rgba(255, 255, 255, 0.1);
-  --input-bg: rgba(255, 255, 255, 0.1);
-  --input-border: rgba(255, 255, 255, 0.2);
+  --panel-bg: rgba(20, 20, 20, 0.95);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.15);
+  --input-border: rgba(255, 255, 255, 0.3);
   --input-fg: #ffffff;
-  --hover-bg: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.15);
   --shadow: rgba(0, 0, 0, 0.5);
-  --legend-bg: rgba(255, 255, 255, 0.9);
+  --legend-bg: rgba(255, 255, 255, 0.95);
   --legend-fg: #000000;
-  --badge-bg: rgba(0, 0, 0, 0.7);
+  --badge-bg: rgba(30, 30, 30, 0.95);
   --badge-fg: #ffffff;
-  --button-bg: rgba(255, 255, 255, 0.1);
-  --button-hover: rgba(255, 255, 255, 0.2);
+  --button-bg: rgba(255, 255, 255, 0.15);
+  --button-hover: rgba(255, 255, 255, 0.25);
   --chart-grid: rgba(255, 255, 255, 0.1);
   --chart-text: #ededed;
 }
@@ -51,6 +51,23 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --card-bg: rgba(30, 30, 30, 0.95);
+  --card-fg: #ffffff;
+  --panel-bg: rgba(20, 20, 20, 0.95);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.15);
+  --input-border: rgba(255, 255, 255, 0.3);
+  --input-fg: #ffffff;
+  --hover-bg: rgba(255, 255, 255, 0.15);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --legend-bg: rgba(255, 255, 255, 0.95);
+  --legend-fg: #000000;
+  --badge-bg: rgba(30, 30, 30, 0.95);
+  --badge-fg: #ffffff;
+  --button-bg: rgba(255, 255, 255, 0.15);
+  --button-hover: rgba(255, 255, 255, 0.25);
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-text: #ededed;
 }
 
 /* Make the 3D canvas fill the entire screen */
