@@ -10,6 +10,8 @@ export function ControlsPanel() {
   const [openMobile, setOpenMobile] = React.useState(false);
   const providerFilters = useLatencyStore((s) => s.providerFilters);
   const setProviderFilter = useLatencyStore((s) => s.setProviderFilter);
+  const exchangeFilters = useLatencyStore((s) => (s as any).exchangeFilters || {});
+  const setExchangeFilter = useLatencyStore((s) => (s as any).setExchangeFilter);
   const pulsesEnabled = useLatencyStore((s) => s.pulsesEnabled);
   const setPulsesEnabled = useLatencyStore((s) => s.setPulsesEnabled);
   const arcSpeed = useLatencyStore((s) => s.arcSpeed);
@@ -31,6 +33,10 @@ export function ControlsPanel() {
   const [focusedSuggestion, setFocusedSuggestion] = React.useState<number>(-1);
   const showRegions = useLatencyStore((s) => (s as any).showRegions);
   const setShowRegions = useLatencyStore((s) => (s as any).setShowRegions);
+  const showArcs = useLatencyStore((s) => (s as any).showArcs ?? true);
+  const setShowArcs = useLatencyStore((s) => (s as any).setShowArcs);
+  const showTopology = useLatencyStore((s) => (s as any).showTopology ?? true);
+  const setShowTopology = useLatencyStore((s) => (s as any).setShowTopology);
   const setCameraTarget = useLatencyStore((s) => (s as any).setCameraTarget);
   const searchQuery = useLatencyStore((s) => s.searchQuery);
   const setSearchQuery = useLatencyStore((s) => s.setSearchQuery);
@@ -62,12 +68,15 @@ export function ControlsPanel() {
   if (parsed.pulsesEnabled !== undefined) setPulsesEnabled(parsed.pulsesEnabled);
   if (parsed.maxLatency !== undefined) setMaxLatency(parsed.maxLatency);
   if (parsed.providerFilters) Object.keys(parsed.providerFilters).forEach((p) => setProviderFilter(p, parsed.providerFilters[p]));
+  if (parsed.exchangeFilters) Object.keys(parsed.exchangeFilters).forEach((ex) => setExchangeFilter(ex, parsed.exchangeFilters[ex]));
   if (parsed.serverProbesEnabled !== undefined) setServerProbesEnabled(parsed.serverProbesEnabled);
   if (parsed.allowClientProbes !== undefined) setAllowClientProbes(parsed.allowClientProbes);
   if (parsed.externalSourceEnabled !== undefined) setExternalSourceEnabled(parsed.externalSourceEnabled);
   if (parsed.showHeatmap !== undefined) setShowHeatmap(parsed.showHeatmap);
   if (parsed.showLegend !== undefined) setShowLegend(parsed.showLegend);
   if (parsed.showRegions !== undefined) setShowRegions(parsed.showRegions);
+  if (parsed.showArcs !== undefined) setShowArcs(parsed.showArcs);
+  if (parsed.showTopology !== undefined) setShowTopology(parsed.showTopology);
   if (parsed.lowPerfMode !== undefined) setLowPerfMode(parsed.lowPerfMode);
       }
     } catch { 
@@ -78,7 +87,7 @@ export function ControlsPanel() {
   // Persist when controls change
   useEffect(() => {
     if (!persistControls) return;
-  const payload = { arcSpeed, pulsesEnabled, maxLatency, providerFilters, serverProbesEnabled, allowClientProbes, externalSourceEnabled, showHeatmap, showLegend, showRegions, lowPerfMode };
+  const payload = { arcSpeed, pulsesEnabled, maxLatency, providerFilters, exchangeFilters, serverProbesEnabled, allowClientProbes, externalSourceEnabled, showHeatmap, showLegend, showRegions, showArcs, showTopology, lowPerfMode };
     localStorage.setItem('tv-controls', JSON.stringify(payload));
   }, [arcSpeed, pulsesEnabled, maxLatency, providerFilters, persistControls, serverProbesEnabled, allowClientProbes, externalSourceEnabled, lowPerfMode, showHeatmap, showLegend, showRegions]);
 
@@ -134,7 +143,7 @@ export function ControlsPanel() {
   {!mobileMode || openMobile ? (
   <>
   <h4 className="font-semibold mb-2">Filters</h4>
-      {Object.keys(providerFilters).map((p) => (
+  {Object.keys(providerFilters).map((p) => (
         <label key={p} className="flex items-center text-sm" title={`Toggle ${p} provider`}>
           <input
             type="checkbox"
@@ -147,6 +156,11 @@ export function ControlsPanel() {
           {p}
         </label>
       ))}
+      {/* Exchange filters (built from live locations) */}
+      <div className="mt-2">
+        <div className="text-xs font-semibold mb-1">Exchanges</div>
+        <ExchangeFilterGroup exchangeFilters={exchangeFilters} setExchangeFilter={setExchangeFilter} />
+      </div>
       <div className="mt-2">
         <label className="flex items-center text-sm">
           <input type="checkbox" checked={pulsesEnabled} onChange={(e) => setPulsesEnabled(e.target.checked)} className="mr-2" />
@@ -159,6 +173,14 @@ export function ControlsPanel() {
         <label className="flex items-center text-sm mt-1">
           <input type="checkbox" checked={showLegend} onChange={(e) => setShowLegend(e.target.checked)} className="mr-2" />
           Legend
+        </label>
+        <label className="flex items-center text-sm mt-1">
+          <input type="checkbox" checked={showArcs} onChange={(e) => setShowArcs(e.target.checked)} className="mr-2" />
+          Show Arcs
+        </label>
+        <label className="flex items-center text-sm mt-1">
+          <input type="checkbox" checked={showTopology} onChange={(e) => setShowTopology(e.target.checked)} className="mr-2" />
+          Show Topology
         </label>
         <label className="flex items-center text-sm mt-1">
           <input type="checkbox" checked={serverProbesEnabled} onChange={(e) => setServerProbesEnabled(e.target.checked)} className="mr-2" />
@@ -426,6 +448,29 @@ function ManualAssign() {
       )}
   {busy && <div className="text-xs">Assigning...</div>}
   {assignMessage && <div className="text-xs text-green-300">{assignMessage}</div>}
+    </div>
+  );
+}
+
+function ExchangeFilterGroup({ exchangeFilters, setExchangeFilter }: { exchangeFilters: Record<string, boolean>, setExchangeFilter: (ex: string, v: boolean) => void }) {
+  const [exchanges, setExchanges] = React.useState<string[]>([]);
+  React.useEffect(() => {
+    let m = true;
+    fetch('/api/locations').then(r => r.json()).then((data) => {
+      if (!m || !Array.isArray(data)) return;
+      const uniq = Array.from(new Set(data.map((l: any) => l.name))).sort();
+      setExchanges(uniq.slice(0, 50));
+    }).catch(() => {});
+    return () => { m = false; };
+  }, []);
+  return (
+    <div className="max-h-24 overflow-auto pr-1">
+      {exchanges.map((name) => (
+        <label key={name} className="flex items-center text-xs">
+          <input type="checkbox" className="mr-2" checked={exchangeFilters[name] !== false} onChange={(e) => setExchangeFilter(name, e.target.checked)} />
+          {name}
+        </label>
+      ))}
     </div>
   );
 }

@@ -39,6 +39,7 @@ export function LatencyArcs() {
   const maxLatency = useLatencyStore((s) => s.maxLatency);
   const minLatency = useLatencyStore((s) => (s as any).minLatency || 0);
   const lowPerfMode = useLatencyStore((s) => (s as any).lowPerfMode);
+  const showArcs = useLatencyStore((s) => (s as any).showArcs ?? true);
   const mobileMode = useLatencyStore((s) => s.mobileMode);
 
   const geomCacheRef = useRef<Map<string, THREE.BufferGeometry>>(new Map());
@@ -216,6 +217,7 @@ export function LatencyArcs() {
     });
   });
 
+  if (!showArcs) return null;
   return (
     <group>
       {arcs.map((a: any) => {

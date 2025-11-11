@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { OrbitControls } from "@react-three/drei";
 import { Earth } from "./Earth"; // Import our new Earth component
 import { Locations } from "./Locations";
@@ -17,8 +18,8 @@ import { ControlsPanel } from "./ControlsPanel";
 import { Regions } from "./Regions";
 import Heatmap from './Heatmap';
 import Topology from './Topology';
-import PerformanceMetrics from './PerformanceMetrics';
-import DataFlow from './DataFlow';
+import PerformanceMetrics, { PerformanceOverlay } from './PerformanceMetrics';
+import DataFlowWrapper from './DataFlow';
 import * as THREE from 'three';
 import SystemStatus from './SystemStatus';
 import RegionBoundaries from './RegionBoundaries';
@@ -156,85 +157,79 @@ export default function Scene() {
   }
 
   // Render manager inside Canvas will handle demand-mode invalidation
+  const queryClient = new QueryClient();
+
   return (
     // Make this container relative so Legend (absolute) positions correctly
     <div className="relative h-full w-full">
-      {/* Set the camera's initial position.
-        'fov' is "field of view".
-        'position' is [x, y, z]. We're setting it 10 units back on the Z-axis.
-      */}
-  <RealtimeProvider>
-  <Canvas
-          camera={{ fov: 75, position: [0, 0, 10] }}
+      <RealtimeProvider>
+        <QueryClientProvider client={queryClient}>
+        <Canvas
           frameloop={lowPerfMode || mobileMode ? 'demand' : 'always'}
-          // prefer a conservative DPR on mobile/low perf; let RenderManager also cap gl pixel ratio
-          dpr={(lowPerfMode || mobileMode) ? 1 : (typeof window !== 'undefined' ? Math.min(2, window.devicePixelRatio || 1) : 1)}
-          gl={{ antialias: !lowPerfMode, powerPreference: lowPerfMode ? 'low-power' : 'default' }}
+          camera={{ position: [0, 0, 6], fov: 50 }}
+          onCreated={({ camera }) => {
+            // store camera ref for DOM overlay projections
+            (window as any).__r3f_camera__ = camera;
+          }}
         >
-        <RenderManager />
-        {/* We'll use a softer ambient light so we can see the whole globe,
-          and a point light to simulate the sun.
-        */}
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={3} />
-
-  {/* This is our new Earth component */}
-  <Earth />
-
-  <RegionBoundaries />
-
-  {/* Render location markers */}
-  <Locations />
-  <LatencyArcs />
-  <Regions />
-  {/* Topology overlay requires useThree, render inside Canvas */}
-  <Topology />
-  {/* Performance metrics (FPS) inside Canvas */}
-  <PerformanceMetrics />
-  {/* Animated data-flow visualization */}
-  <DataFlow />
-  {/* PairLabel uses <Html /> and must be inside Canvas */}
-  <PairLabel />
-  {/* Camera animator must be inside Canvas */}
-  <CameraAnimator />
-        
-        {/*
-          OrbitControls allow the user to rotate, zoom, and pan.
-          We've added min/max distance to prevent zooming too far in or out.
-        */}
-        <OrbitControls 
-          enableZoom={true}
-          enablePan={true}
-          enableDamping={true}
-          // compute control params once per render to avoid repeated store reads inside JSX
-          dampingFactor={mobileMode ? 0.16 : 0.08}
-          rotateSpeed={mobileMode ? 0.45 : 0.6}
-          panSpeed={mobileMode ? 0.7 : 0.9}
-          minDistance={mobileMode ? 4 : 5}
-          maxDistance={mobileMode ? 12 : 20}
-        />
-      </Canvas>
-      {/* InfoPanel overlay (show selected location/pair stats) */}
-      <InfoPanel />
-  </RealtimeProvider>
-        {/* Legend rendered as an overlay in the DOM */}
-        {showLegend && <Legend />}
-
-      {/* Heatmap overlay (togglable via store) */}
-      {showHeatmap && <Heatmap />}
-
-      <ControlsPanel />
-      <SystemStatus />
-      <HistoryPanel />
-
-      <SelectionBadge />
-      <StatusBadge />
-      {/* Inline fallback visible during development */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="fixed bottom-20 left-4 z-50 rounded bg-pink-500 text-white px-3 py-2">
-          LEGEND FALLBACK
+          <ambientLight intensity={0.2} />
+          <directionalLight position={[5, 5, 5]} intensity={1.2} />
+          <Earth />
+          <Locations />
+          <LatencyArcs />
+          <Regions />
+          <RegionBoundaries />
+          <DataFlowWrapper />
+          <CameraAnimator />
+          <RenderManager />
+          <OrbitControls
+            enablePan={true}
+            enableZoom={true}
+            enableRotate={true}
+            minDistance={3.5}
+            maxDistance={10}
+            zoomSpeed={0.6}
+            rotateSpeed={0.4}
+          />
+          <Topology />
+          <PerformanceMetrics />
+        </Canvas>
+        </QueryClientProvider>
+  <div id="data-flow-container" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />
+  {showHeatmap && <Heatmap />}
+        <PerformanceOverlay />
+        <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none">
+          <div className="flex flex-col h-full">
+            <div className="p-4 flex justify-between items-start">
+              {/* Top-left UI elements */}
+              <div className="flex flex-col space-y-2 items-start">
+                <SelectionBadge />
+                <StatusBadge />
+              </div>
+              {/* Top-right UI elements */}
+              <div className="flex flex-col space-y-2 items-end">
+                <SystemStatus />
+              </div>
+            </div>
+            <div className="flex-grow" /> {/* Spacer */}
+            <div className="p-4 flex justify-between items-end">
+              {/* Bottom-left UI elements */}
+              <div className="flex flex-col space-y-2 items-start">
+                {showLegend && <Legend />}
+                <ControlsPanel />
+              </div>
+              {/* Bottom-right UI elements */}
+              <div className="flex flex-col space-y-2 items-end">
+                <HistoryPanel />
+                <InfoPanel />
+              </div>
+            </div>
+          </div>
         </div>
-      )}
+        <PairLabel />
+        {/* <Topology />
+        <PerformanceMetrics /> */}
+      </RealtimeProvider>
     </div>
   );
 }

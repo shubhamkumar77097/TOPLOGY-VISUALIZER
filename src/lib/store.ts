@@ -16,6 +16,7 @@ type State = {
   wsStatus: 'connecting' | 'connected' | 'disconnected';
   providerFilters: Record<string, boolean>;
   regionFilters: Record<string, boolean>;
+  exchangeFilters: Record<string, boolean>;
   pulsesEnabled: boolean;
   externalSourceEnabled: boolean;
   arcSpeed: number;
@@ -33,6 +34,7 @@ type State = {
   setWsStatus: (st: 'connecting' | 'connected' | 'disconnected') => void;
   setProviderFilter: (provider: string, enabled: boolean) => void;
   setRegionFilter: (region: string, enabled: boolean) => void;
+  setExchangeFilter: (exchange: string, enabled: boolean) => void;
   setPulsesEnabled: (enabled: boolean) => void;
   setExternalSourceEnabled: (v: boolean) => void;
   setArcSpeed: (speed: number) => void;
@@ -45,6 +47,10 @@ type State = {
   setLowPerfMode: (m: boolean) => void;
   setHoveredRegion: (r: string | null) => void;
   setSmoothingFactor?: (v: number) => void;
+  showArcs?: boolean;
+  setShowArcs?: (v: boolean) => void;
+  showTopology?: boolean;
+  setShowTopology?: (v: boolean) => void;
 };
 
 export const useLatencyStore = create<State>((set) => ({
@@ -55,6 +61,7 @@ export const useLatencyStore = create<State>((set) => ({
   wsStatus: 'disconnected',
   providerFilters: { AWS: true, GCP: true, Azure: true, Other: true },
   regionFilters: {},
+  exchangeFilters: {},
   pulsesEnabled: true,
   arcSpeed: 1,
   maxLatency: 1000,
@@ -74,6 +81,8 @@ export const useLatencyStore = create<State>((set) => ({
   externalSourceEnabled: false,
   smoothingFactor: 0.35,
   hoveredRegion: null,
+  showArcs: true,
+  showTopology: true,
   setLatency: (key: string, rec: LatencyRecord) =>
     set((state: State) => {
       const prev = state.history[key] ?? [];
@@ -90,6 +99,8 @@ export const useLatencyStore = create<State>((set) => ({
     set((state) => ({ providerFilters: { ...state.providerFilters, [provider]: enabled } } as Partial<State> as State)),
   setRegionFilter: (region: string, enabled: boolean) =>
     set((state) => ({ regionFilters: { ...state.regionFilters, [region]: enabled } } as Partial<State> as State)),
+  setExchangeFilter: (exchange: string, enabled: boolean) =>
+    set((state) => ({ exchangeFilters: { ...state.exchangeFilters, [exchange]: enabled } } as Partial<State> as State)),
   setPulsesEnabled: (enabled: boolean) => set({ pulsesEnabled: enabled } as Partial<State> as State),
   setShowHeatmap: (v: boolean) => set({ showHeatmap: v } as Partial<State> as State),
   setShowLegend: (v: boolean) => set({ showLegend: v } as Partial<State> as State),
@@ -109,4 +120,6 @@ export const useLatencyStore = create<State>((set) => ({
   setServerProbesEnabled: (v: boolean) => set({ serverProbesEnabled: v } as Partial<State> as State),
   setAllowClientProbes: (v: boolean) => set({ allowClientProbes: v } as Partial<State> as State),
   setExternalSourceEnabled: (v: boolean) => set({ externalSourceEnabled: v } as Partial<State> as State),
+  setShowArcs: (v: boolean) => set({ showArcs: v } as Partial<State> as State),
+  setShowTopology: (v: boolean) => set({ showTopology: v } as Partial<State> as State),
 }));

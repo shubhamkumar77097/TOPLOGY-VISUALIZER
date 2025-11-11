@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from '@/lib/fonts';
 import "./globals.css";
 // server-side prune scheduler (runs when layout module is imported in node)
 import '@/lib/pruneScheduler';

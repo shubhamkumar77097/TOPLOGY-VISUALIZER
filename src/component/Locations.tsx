@@ -34,6 +34,7 @@ export function Locations() {
   const setSelected = useLatencyStore((s) => s.setSelectedLocation);
   const providerFilters = useLatencyStore((s) => s.providerFilters);
   const regionFilters = useLatencyStore((s) => (s as any).regionFilters || {});
+  const exchangeFilters = useLatencyStore((s) => (s as any).exchangeFilters || {});
   const latencies = useLatencyStore((s) => s.latencies);
   const searchQuery = useLatencyStore((s) => s.searchQuery);
   const mobileMode = useLatencyStore((s) => s.mobileMode);
@@ -52,6 +53,7 @@ export function Locations() {
   let visible = enriched.filter((loc) => {
     if (!providerFilters[loc.provider]) return false;
     if (loc.region_code && regionFilters && Object.keys(regionFilters).length && regionFilters[loc.region_code] === false) return false;
+    if (Object.keys(exchangeFilters).length && exchangeFilters[loc.name] === false) return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       return [loc.id, loc.name, loc.city, loc.provider].join(' ').toLowerCase().includes(q);
