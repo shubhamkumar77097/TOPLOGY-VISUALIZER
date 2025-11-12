@@ -1,5 +1,8 @@
 # 🌍 Latency Topology Visualizer
 
+###### please goto QUICKSTART.md to learn how to start locally quickly
+
+
 A Next.js application that displays a stunning 3D world map visualizing exchange server locations and real-time/historical latency data across AWS, GCP, and Azure co-location regions for cryptocurrency trading infrastructure.
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
