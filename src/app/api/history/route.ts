@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
 import { appendRecord, queryRecords } from '@/lib/historyStore';
+import { jsonResponse } from '@/lib/apiHelpers';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const key = `${body.from}->${body.to}`;
   await appendRecord(key, body);
-    return NextResponse.json({ ok: true });
+    return jsonResponse({ ok: true }, req);
   } catch (e) {
-    return NextResponse.json({ ok: false, error: String(e) }, { status: 400 });
+    return jsonResponse({ ok: false, error: String(e) }, req, { status: 400 });
   }
 }
 
@@ -21,9 +22,9 @@ export async function GET(req: Request) {
   const fromTs = url.searchParams.get('from') ? Number(url.searchParams.get('from')) : undefined;
   const toTs = url.searchParams.get('to') ? Number(url.searchParams.get('to')) : undefined;
   const data = await queryRecords(pair ?? undefined, fromTs, toTs);
-  return NextResponse.json(data);
+  return jsonResponse(data, req);
   } catch (e) {
-    return NextResponse.json({ ok: false, error: String(e) }, { status: 400 });
+    return jsonResponse({ ok: false, error: String(e) }, req, { status: 400 });
   }
 }
 

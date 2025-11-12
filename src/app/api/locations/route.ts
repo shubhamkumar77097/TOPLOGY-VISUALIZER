@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
+import { jsonResponse } from '@/lib/apiHelpers';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
     // try reading from sqlite via sql.js unconditionally (server-side)
   // dynamically import sql.js optionally
@@ -17,7 +18,7 @@ export async function GET() {
       const rows = db.exec('SELECT id, name, city, lat, lng, provider, region_code FROM locations');
       if (rows && rows[0] && rows[0].values) {
         const out = rows[0].values.map((v: any[]) => ({ id: v[0], name: v[1], city: v[2], lat: v[3], lng: v[4], provider: v[5], region_code: v[6] }));
-        return NextResponse.json(out);
+        return jsonResponse(out, req);
       }
     }
   } catch {
@@ -29,8 +30,8 @@ export async function GET() {
     const p = path.resolve(base, 'data', 'exchanges.json');
     if (fs.existsSync(p)) {
       const raw = fs.readFileSync(p, 'utf8');
-      return NextResponse.json(JSON.parse(raw));
+      return jsonResponse(JSON.parse(raw), req);
     }
   } catch {}
-  return NextResponse.json([]);
+  return jsonResponse([], req);
 }

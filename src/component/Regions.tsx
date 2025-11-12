@@ -29,6 +29,7 @@ export function Regions() {
   const setProviderFilter = useLatencyStore((s) => s.setProviderFilter);
   const providerFilters = useLatencyStore((s) => s.providerFilters);
   const showRegions = useLatencyStore((s) => (s as any).showRegions ?? true);
+  const showEmptyRegions = useLatencyStore((s) => (s as any).showEmptyRegions ?? false);
 
   if (!showRegions) return null;
 
@@ -36,6 +37,8 @@ export function Regions() {
     <group>
       {clusters.map((c) => {
         if (providerFilters && providerFilters[c.provider] === false) return null;
+        // Filter out regions with 0 servers if showEmptyRegions is false
+        if (c.serverCount === 0 && !showEmptyRegions) return null;
         const isHovered = hoveredRegion === c.provider;
         const isSelected = selectedRegion === c.provider;
         

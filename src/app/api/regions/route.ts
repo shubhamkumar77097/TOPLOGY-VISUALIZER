@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import { jsonResponse } from '@/lib/apiHelpers';
 import fs from 'fs';
 import path from 'path';
 import regionsSample from '@/data/regions.sample';
 
 // (ray-cast logic implemented inline where needed)
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
     const base = process.cwd();
     const regionsPath = path.resolve(base, 'data', 'provider-regions.json');
@@ -167,8 +168,8 @@ export async function GET() {
 
     // filter out any nulls we created above
     const filtered = out.filter(Boolean);
-    return NextResponse.json({ type: 'FeatureCollection', features: filtered });
+    return jsonResponse({ type: 'FeatureCollection', features: filtered }, req);
   } catch {
-    return NextResponse.json({ type: 'FeatureCollection', features: [] });
+    return jsonResponse({ type: 'FeatureCollection', features: [] }, req);
   }
 }

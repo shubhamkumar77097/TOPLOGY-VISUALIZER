@@ -90,9 +90,8 @@ body {
 /* FORCE UI ELEMENTS TO BE VISIBLE - CRITICAL OVERRIDES */
 /* These rules ensure ControlsPanel and Legend are always visible regardless of other styles */
 
-/* Force ControlsPanel visibility */
+/* Force ControlsPanel visibility (default) */
 [class*="ControlsPanel"],
-div[style*="top: 1rem"][style*="right: 1rem"],
 .fixed.top-4.right-4 {
   display: block !important;
   opacity: 1 !important;
@@ -100,6 +99,25 @@ div[style*="top: 1rem"][style*="right: 1rem"],
   pointer-events: auto !important;
   z-index: 999999 !important;
   position: fixed !important;
+}
+
+/* Centered, white ControlsPanel variant */
+[data-center="true"].z-\[1000000\],
+[data-center="true"][class*="ControlsPanel"] {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(90vw, 380px) !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Fallback dark style (when not center variant) */
+[class*="ControlsPanel"]:not([data-center="true"]) {
+  top: 1rem !important;
+  right: 1rem !important;
   background-color: rgba(40, 40, 40, 0.98) !important;
   color: white !important;
   border: 2px solid rgba(255, 255, 255, 0.4) !important;
@@ -126,23 +144,24 @@ div[style*="top: 1rem"][style*="right: 1rem"],
 [class*="Legend"] button,
 .fixed.top-4.right-4 button,
 .fixed.bottom-4.left-4 button {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
   padding: 0.25rem 0.75rem !important;
   cursor: pointer !important;
   display: inline-block !important;
 }
 
 /* Make sure text is readable */
-[class*="ControlsPanel"] *,
-.fixed.top-4.right-4 * {
-  color: white !important;
-}
-
 [class*="Legend"] *,
 .fixed.bottom-4.left-4 * {
   color: black !important;
+}
+
+/* For centered white panel, ensure inner text is black */
+[data-center="true"] *,
+[data-center="true"] .fixed.top-4.right-4 * {
+  color: #000000 !important;
 }
 
 /* Override any pointer-events:none on parent containers */

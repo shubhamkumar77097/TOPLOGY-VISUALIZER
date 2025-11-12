@@ -5,6 +5,7 @@ import "./globals.css";
 import '@/lib/pruneScheduler';
 import ClientBootstrap from '@/component/ClientBootstrap';
 import { ThemeProvider } from '@/component/ThemeProvider';
+import { GlobalApiEndpoints } from '@/component/GlobalApiEndpoints';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <ClientBootstrap />
+          <GlobalApiEndpoints />
         </ThemeProvider>
       </body>
     </html>

@@ -38,6 +38,7 @@ function coordsToMesh(pts: number[][]) {
 
 const RegionBoundaries: React.FC = () => {
   const show = useLatencyStore((s) => (s as any).showRegions ?? true);
+  const showEmptyRegions = useLatencyStore((s) => (s as any).showEmptyRegions ?? false);
   const setRegionFilter = useLatencyStore((s) => (s as any).setRegionFilter);
   const hoveredRegion = useLatencyStore((s) => (s as any).hoveredRegion);
   const setHoveredRegion = useLatencyStore((s) => (s as any).setHoveredRegion);
@@ -69,6 +70,11 @@ const RegionBoundaries: React.FC = () => {
       {meshes.map((m, i) => {
         const providerFilters = (useLatencyStore.getState() as any).providerFilters || {};
         if (providerFilters && providerFilters[m.props.provider] === false) return null;
+        
+        // Filter out regions with 0 servers if showEmptyRegions is false
+        const serverCount = m.props.serverCount ?? (Array.isArray((m.props as any).members) ? (m.props as any).members.length : 0);
+        if (serverCount === 0 && !showEmptyRegions) return null;
+        
         return (
         <group key={i}>
             <mesh

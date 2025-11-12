@@ -10,17 +10,22 @@ import { useLatencyStore } from '@/lib/store';
 export function RegionPolygons() {
   const providers = Array.from(new Set(locations.map((l) => l.provider)));
   const show = useLatencyStore((s) => (s as any).showRegions ?? true);
+  const showEmptyRegions = useLatencyStore((s) => (s as any).showEmptyRegions ?? false);
   if (!show) return null;
 
   const clusters = providers.map((p) => {
     const pts = locations.filter((l) => l.provider === p).map((l) => convertLatLonToVec3(l.lat, l.lng, 3));
     const avg = pts.reduce((acc, v) => acc.add(v.clone()), new THREE.Vector3()).multiplyScalar(1 / Math.max(1, pts.length));
-    return { provider: p, pos: avg };
+    const serverCount = locations.filter((l) => l.provider === p).length;
+    return { provider: p, pos: avg, serverCount };
   });
 
   return (
     <group>
-      {clusters.map((c) => (
+      {clusters.map((c) => {
+        // Filter out regions with 0 servers if showEmptyRegions is false
+        if (c.serverCount === 0 && !showEmptyRegions) return null;
+        return (
         <group key={c.provider} position={[c.pos.x, c.pos.y, c.pos.z] as any}>
           <mesh rotation={[0, 0, 0]}>
             <circleGeometry args={[0.6, 32]} />
@@ -30,7 +35,8 @@ export function RegionPolygons() {
             <div className="bg-white/90 text-black text-xs rounded px-2 py-1">{c.provider}</div>
           </Html>
         </group>
-      ))}
+        );
+      })}
     </group>
   );
 }

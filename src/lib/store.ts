@@ -27,7 +27,19 @@ type State = {
   theme: 'dark' | 'light';
   mobileMode: boolean;
   lowPerfMode: boolean;
-  smoothingFactor?: number;
+  smoothingFactor: number;
+  showHeatmap: boolean;
+  showLegend: boolean;
+  showRegions: boolean;
+  showEmptyRegions: boolean;
+  cameraTarget: any;
+  wsPolling: boolean;
+  serverProbesEnabled: boolean;
+  allowClientProbes: boolean;
+  showArcs: boolean;
+  showTopology: boolean;
+  visibleRegions: Set<string>;
+
   setLatency: (key: string, rec: LatencyRecord) => void;
   setSelectedLocation: (id: string | null) => void;
   setSelectedPair: (pair: string | null) => void;
@@ -46,11 +58,18 @@ type State = {
   setMobileMode: (m: boolean) => void;
   setLowPerfMode: (m: boolean) => void;
   setHoveredRegion: (r: string | null) => void;
-  setSmoothingFactor?: (v: number) => void;
-  showArcs?: boolean;
-  setShowArcs?: (v: boolean) => void;
-  showTopology?: boolean;
-  setShowTopology?: (v: boolean) => void;
+  setSmoothingFactor: (v: number) => void;
+  setShowHeatmap: (v: boolean) => void;
+  setShowLegend: (v: boolean) => void;
+  setShowRegions: (v: boolean) => void;
+  setShowEmptyRegions: (v: boolean) => void;
+  setCameraTarget: (t: any) => void;
+  setWsPolling: (v: boolean) => void;
+  setServerProbesEnabled: (v: boolean) => void;
+  setAllowClientProbes: (v: boolean) => void;
+  setShowArcs: (v: boolean) => void;
+  setShowTopology: (v: boolean) => void;
+  toggleRegionVisibility: (code: string) => void;
 };
 
 export const useLatencyStore = create<State>((set) => ({
@@ -70,7 +89,8 @@ export const useLatencyStore = create<State>((set) => ({
   showHeatmap: true,
   showLegend: true,
   showRegions: true,
-  cameraTarget: null as any,
+  showEmptyRegions: false,
+  cameraTarget: null,
   searchQuery: '',
   theme: 'dark',
   mobileMode: false,
@@ -83,43 +103,63 @@ export const useLatencyStore = create<State>((set) => ({
   hoveredRegion: null,
   showArcs: true,
   showTopology: true,
+  visibleRegions: new Set<string>(),
   setLatency: (key: string, rec: LatencyRecord) =>
-    set((state: State) => {
+    set((state) => {
       const prev = state.history[key] ?? [];
       const history = [...prev, rec].slice(-500);
       return {
         latencies: { ...state.latencies, [key]: rec },
         history: { ...state.history, [key]: history },
-      } as Partial<State> as State;
+      };
     }),
   setSelectedLocation: (id: string | null) => set({ selectedLocation: id }),
   setSelectedPair: (pair: string | null) => set({ selectedPair: pair }),
   setWsStatus: (st: 'connecting' | 'connected' | 'disconnected') => set({ wsStatus: st }),
   setProviderFilter: (provider: string, enabled: boolean) =>
-    set((state) => ({ providerFilters: { ...state.providerFilters, [provider]: enabled } } as Partial<State> as State)),
+    set((state) => {
+      if (state.providerFilters[provider] === enabled) return {};
+      return { providerFilters: { ...state.providerFilters, [provider]: enabled } };
+    }),
   setRegionFilter: (region: string, enabled: boolean) =>
-    set((state) => ({ regionFilters: { ...state.regionFilters, [region]: enabled } } as Partial<State> as State)),
+    set((state) => {
+      if (state.regionFilters[region] === enabled) return {};
+      return { regionFilters: { ...state.regionFilters, [region]: enabled } };
+    }),
   setExchangeFilter: (exchange: string, enabled: boolean) =>
-    set((state) => ({ exchangeFilters: { ...state.exchangeFilters, [exchange]: enabled } } as Partial<State> as State)),
-  setPulsesEnabled: (enabled: boolean) => set({ pulsesEnabled: enabled } as Partial<State> as State),
-  setShowHeatmap: (v: boolean) => set({ showHeatmap: v } as Partial<State> as State),
-  setShowLegend: (v: boolean) => set({ showLegend: v } as Partial<State> as State),
-  setShowRegions: (v: boolean) => set({ showRegions: v } as Partial<State> as State),
-  setCameraTarget: (t: any) => set({ cameraTarget: t } as Partial<State> as State),
-  setArcSpeed: (speed: number) => set({ arcSpeed: speed } as Partial<State> as State),
-  setMaxLatency: (m: number) => set({ maxLatency: m } as Partial<State> as State),
-  setMinLatency: (m: number) => set({ minLatency: m } as Partial<State> as State),
-  setPersistControls: (v: boolean) => set({ persistControls: v } as Partial<State> as State),
-  setSearchQuery: (q: string) => set({ searchQuery: q } as Partial<State> as State),
-  setTheme: (t: 'dark'|'light') => set({ theme: t } as Partial<State> as State),
-  setMobileMode: (m: boolean) => set({ mobileMode: m } as Partial<State> as State),
-  setLowPerfMode: (m: boolean) => set({ lowPerfMode: m } as Partial<State> as State),
-  setHoveredRegion: (r: string | null) => set({ hoveredRegion: r } as Partial<State> as State),
-  setSmoothingFactor: (v: number) => set({ smoothingFactor: v } as Partial<State> as State),
-  setWsPolling: (v: boolean) => set({ wsPolling: v } as Partial<State> as State),
-  setServerProbesEnabled: (v: boolean) => set({ serverProbesEnabled: v } as Partial<State> as State),
-  setAllowClientProbes: (v: boolean) => set({ allowClientProbes: v } as Partial<State> as State),
-  setExternalSourceEnabled: (v: boolean) => set({ externalSourceEnabled: v } as Partial<State> as State),
-  setShowArcs: (v: boolean) => set({ showArcs: v } as Partial<State> as State),
-  setShowTopology: (v: boolean) => set({ showTopology: v } as Partial<State> as State),
+    set((state) => {
+      if (state.exchangeFilters[exchange] === enabled) return {};
+      return { exchangeFilters: { ...state.exchangeFilters, [exchange]: enabled } };
+    }),
+  setPulsesEnabled: (enabled: boolean) => set((state) => (state.pulsesEnabled === enabled ? {} : { pulsesEnabled: enabled })),
+  setShowHeatmap: (v: boolean) => set((state) => (state.showHeatmap === v ? {} : { showHeatmap: v })),
+  setShowLegend: (v: boolean) => set((state) => (state.showLegend === v ? {} : { showLegend: v })),
+  setShowRegions: (v: boolean) => set((state) => (state.showRegions === v ? {} : { showRegions: v })),
+  setShowEmptyRegions: (v: boolean) => set((state) => (state.showEmptyRegions === v ? {} : { showEmptyRegions: v })),
+  setCameraTarget: (t: any) => set({ cameraTarget: t }),
+  setArcSpeed: (speed: number) => set({ arcSpeed: speed }),
+  setMaxLatency: (m: number) => set({ maxLatency: m }),
+  setMinLatency: (m: number) => set({ minLatency: m }),
+  setPersistControls: (v: boolean) => set({ persistControls: v }),
+  setSearchQuery: (q: string) => set({ searchQuery: q }),
+  setTheme: (t: 'dark'|'light') => set({ theme: t }),
+  setMobileMode: (m: boolean) => set({ mobileMode: m }),
+  setLowPerfMode: (m: boolean) => set((state) => (state.lowPerfMode === m ? {} : { lowPerfMode: m })),
+  setHoveredRegion: (r: string | null) => set({ hoveredRegion: r }),
+  setSmoothingFactor: (v: number) => set({ smoothingFactor: v }),
+  setWsPolling: (v: boolean) => set((state) => (state.wsPolling === v ? {} : { wsPolling: v })),
+  setServerProbesEnabled: (v: boolean) => set((state) => (state.serverProbesEnabled === v ? {} : { serverProbesEnabled: v })),
+  setAllowClientProbes: (v: boolean) => set((state) => (state.allowClientProbes === v ? {} : { allowClientProbes: v })),
+  setExternalSourceEnabled: (v: boolean) => set((state) => (state.externalSourceEnabled === v ? {} : { externalSourceEnabled: v })),
+  setShowArcs: (v: boolean) => set((state) => (state.showArcs === v ? {} : { showArcs: v })),
+  setShowTopology: (v: boolean) => set((state) => (state.showTopology === v ? {} : { showTopology: v })),
+  toggleRegionVisibility: (code: string) => set((state) => {
+    const newSet = new Set(state.visibleRegions);
+    if (newSet.has(code)) {
+      newSet.delete(code);
+    } else {
+      newSet.add(code);
+    }
+    return { visibleRegions: newSet };
+  }),
 }));
